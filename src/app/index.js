@@ -1,3 +1,7 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
+import { Dashboard } from "./components/Dashboard";
 import { store } from "./store";
 
-console.log(store.getState());
+ReactDOM.render(<Dashboard />, document.getElementById("app"));
