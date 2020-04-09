@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { Dashboard } from "./components/Dashboard";
+import { Main } from "./components/Main";
 import { store } from "./store";
 
-ReactDOM.render(<Dashboard />, document.getElementById("app"));
+ReactDOM.render(<Main />, document.getElementById("app"));
