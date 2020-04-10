@@ -16,7 +16,9 @@ export const Main = () => (
         <Route exact path="/dashboard" render={() => <ConnectedDashboard />} />
         <Route
           path="/task/:id"
-          render={(match) => <ConnectedTaskDetail match={match} />}
+          render={(routeProps) => (
+            <ConnectedTaskDetail match={routeProps.match} />
+          )}
         />
       </>
     </Provider>
