@@ -23,7 +23,7 @@ const TaskDetail = ({
       </button>
     </div>
     <div>
-      <select onChange={setTaskGroup}>
+      <select onChange={setTaskGroup} value={task.groupID}>
         {groups.map((group) => (
           <option key={group.id} value={group.id}>
             {group.name}
