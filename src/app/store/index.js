@@ -16,6 +16,9 @@ export const store = createStore(
     groups(groups = defaultState.groups) {
       return groups;
     },
+    session(session = defaultState.session) {
+      return session;
+    },
     tasks(tasks = defaultState.tasks, action) {
       switch (action.type) {
         case mutations.CREATE_TASK:
