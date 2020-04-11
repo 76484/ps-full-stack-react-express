@@ -2,13 +2,17 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 
+import { authenticationRoute } from "./authenticate";
 import { connectDB } from "./connect-db";
+import "./initialize-db";
 
 const port = 7777;
 
 const app = express();
 
 app.use(cors(), bodyParser.urlencoded({ extended: true }), bodyParser.json());
+
+authenticationRoute(app);
 
 export const addNewTask = async (task) => {
   const db = await connectDB();
