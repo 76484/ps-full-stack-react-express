@@ -16,7 +16,7 @@ export const store = createStore(
     groups(groups = defaultState.groups) {
       return groups;
     },
-    session(session = defaultState.session) {
+    session(session = defaultState.session || {}) {
       return session;
     },
     tasks(tasks = defaultState.tasks, action) {
