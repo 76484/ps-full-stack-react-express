@@ -20,7 +20,7 @@ async function assembleUserState(user) {
   };
 }
 
-export const authenticateRoute = (app) => {
+export const authenticationRoute = (app) => {
   app.post("/authenticate", async (req, res) => {
     const { username, password } = req.body;
     const db = await connectDB();
