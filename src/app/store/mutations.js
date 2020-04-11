@@ -1,4 +1,8 @@
+export const AUTHENTICATED = "AUTHENTICATED";
+export const AUTHENTICATING = "AUTHENTICATING";
 export const CREATE_TASK = "CREATE_TASK";
+export const NOT_AUTHENTICATED = "NOT_AUTHENTICATED";
+export const PROCESSING_AUTHENTICATE_USER = "PROCESSING_AUTHENTICATE_USER";
 export const REQUEST_AUTHENTICATE_USER = "REQUEST_AUTHENTICATE_USER";
 export const REQUEST_TASK_CREATION = "REQUEST_TASK_CREATION";
 export const SET_TASK_COMPLETE = "SET_TASK_COMPLETE";
@@ -11,6 +15,17 @@ export const createTask = (taskID, groupID, ownerID) => {
     groupID,
     ownerID,
     taskID,
+  };
+};
+
+export const processAuthenticateUser = (
+  status = AUTHENTICATING,
+  session = null
+) => {
+  return {
+    type: PROCESSING_AUTHENTICATE_USER,
+    session,
+    authenticated: status,
   };
 };
 
