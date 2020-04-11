@@ -10,10 +10,14 @@ const sagaMiddleware = createSagaMiddleware();
 
 export const store = createStore(
   combineReducers({
-    comments(comments = defaultState.comments) {
+    comments(comments = []) {
       return comments;
     },
-    groups(groups = defaultState.groups) {
+    groups(groups = [], action) {
+      switch (action.type) {
+        case mutations.SET_STATE:
+          return action.state.groups;
+      }
       return groups;
     },
     session(userSession = defaultState.session || {}, action) {
@@ -23,10 +27,12 @@ export const store = createStore(
           return { ...userSession, authenticated: mutations.AUTHENTICATING };
         case mutations.PROCESSING_AUTHENTICATE_USER:
           return { ...userSession, authenticated };
+        case mutations.SET_STATE:
+          return { ...userSession, id: action.state.session.id };
       }
       return userSession;
     },
-    tasks(tasks = defaultState.tasks, action) {
+    tasks(tasks = [], action) {
       switch (action.type) {
         case mutations.CREATE_TASK:
           return [
@@ -39,6 +45,8 @@ export const store = createStore(
               isComplete: false,
             },
           ];
+        case mutations.SET_STATE:
+          return action.state.tasks;
         case mutations.SET_TASK_COMPLETE:
           return tasks.map((task) => {
             return task.id === action.taskID
@@ -60,7 +68,7 @@ export const store = createStore(
       }
       return tasks;
     },
-    users(users = defaultState.users) {
+    users(users = []) {
       return users;
     },
   }),
